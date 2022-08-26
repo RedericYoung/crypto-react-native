@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Modal from "react-native-modal";
 
 import { Button, Text } from "@rneui/themed";
@@ -53,7 +53,7 @@ const ExchangeRates = (props) => {
         isVisible={modalVisible}
         style={{
           flex: 0,
-          marginTop: 300,
+          marginTop: 200,
           justifyContent: 'center',
           alignItems: 'center'
         }}

@@ -6,8 +6,7 @@ import { ButtonGroup, Image, Text } from "@rneui/themed";
 const TradeCypto = (props) => {
 	const { width } = Dimensions.get('window'); 
 	const buttons = ['Buy', 'Sell'];
-	const today = new Date();
-  
+
   return (
     <View style={{...styles.modalView, width: width * .8}}>
 			<Text h3>{props.rate.name}/{props.currency}</Text>
@@ -25,7 +24,14 @@ const TradeCypto = (props) => {
 					onPress={() => {}}
 					selectedIndex={0}
 					buttons={buttons}
-					containerStyle={{height: 40}}
+					containerStyle={{height: 40, paddingHorizontal: 10}}
+					buttonStyle={{
+						backgroundColor: 'red',
+						
+					}}
+					textStyle={{
+						color: 'white'
+					}}
 				/>
 			</View>
 		</View>
