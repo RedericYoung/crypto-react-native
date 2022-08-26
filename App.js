@@ -9,15 +9,20 @@ import ExchangeRates from './src/components/Exchange-Rates';
 const App = () => {
   const [currency, selectCurrency] = useState('USD');
   const [rates, setExhangeRate] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    selectCurrency('USD');
     getBitCoinPrice(currency);
-  }, [currency]);
+  }, []);
 
   const getBitCoinPrice = async(currency) => {
-    fetch(`https://api.coinbase.com/v2/exchange-rates?currency=${currency}`)
+    selectCurrency(currency);
+    setLoading(true);
+    await fetch(`https://api.coinbase.com/v2/exchange-rates?currency=${currency}`)
       .then((response) => response.json())
       .then(({ data }) => {
+        setLoading(false);
         setExhangeRate(data.rates);
       });
   }; 
@@ -25,8 +30,8 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text h3 style={styles.text}>Crypto Exchange</Text>
-      <CurrencySelection selectCurrency={selectCurrency} />
-      <ExchangeRates currency={currency} rates={rates} />
+      <CurrencySelection selectCurrency={getBitCoinPrice} />
+      <ExchangeRates currency={currency} loading={loading} rates={rates} />
     </View>
   );
 }
